@@ -1,6 +1,6 @@
 # Deltvolve - Landing Page
 
-The official landing page for Deltvolves, designed to introduce the company, communicate its goals and provide visitors with a clear path to learn more about it.
+The landing page for Deltvolve, designed to introduce the company, communicate its goals and provide visitors with a clear path to learn more about it.
 
 Overview
 
