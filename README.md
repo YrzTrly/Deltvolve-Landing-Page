@@ -2,18 +2,18 @@
 
 The official landing page for Deltvolves, designed to introduce the company, communicate its goals and provide visitors with a clear path to learn more about it.
 
-#Overview
+Overview
 
 This project is the unofficial draft of the frontend implementation of the Deltvolve landing page. 
 
-#Features
+Features
 
 Company Presentation: Communicates Deltvolve's identity and purpose.
 
 Landing Page Sections: Organizes key information into clear, easy-to-navigate sections.
 
 
-#Tech Stack
+Tech Stack
 
 
 Frontend: [HTML, CSS, JavaScript, React,]
