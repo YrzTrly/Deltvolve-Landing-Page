@@ -50,12 +50,15 @@ nav {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* logo far left, links far right */
+  justify-content: space-between;
   width: 100%;
   height: 80px;
   padding: 0 48px;
-  background-color: var(--black);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(2, 7, 21, 0.72); /* your --black, semi-transparent */
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--electric-soft-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
 }
 
 /* Logo + name */
@@ -70,7 +73,18 @@ nav {
   width: 28px;
   object-fit: contain;
   display: block;
+filter: drop-shadow(0 0 5px rgba(0, 166, 255, 0.7))
+        drop-shadow(0 0 12px rgba(0, 166, 255, 0.5))
+        drop-shadow(0 0 22px rgba(0, 166, 255, 0.3));
+
 }
+
+.what-we-do,
+.visitor-pathways,
+#final_cta {
+  scroll-margin-top: 80px;
+}
+
 
 .logo-name {
   margin: 0;
@@ -94,7 +108,8 @@ nav {
 }
 
 #list-items a {
-  color: white;
+  position: relative;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   font-size: 17px;
   padding: 8px 0;
@@ -103,6 +118,38 @@ nav {
 
 #list-items a:hover {
   color: var(--electric);
+}
+
+/* Underline that grows in on hover */
+#list-items li:not(:last-child) a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--electric);
+  transition: width 0.25s ease;
+}
+
+#list-items li:not(:last-child) a:hover::after {
+  width: 100%;
+}
+
+#list-items li:last-child a {
+  padding: 10px 24px;
+  border: 1px solid var(--electric-soft-border);
+  border-radius: 999px;
+  background-color: var(--electric-soft);
+  color: var(--electric);
+  font-weight: 700;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+#list-items li:last-child a:hover {
+  background-color: var(--electric);
+  border-color: var(--electric);
+  color: var(--black);
 }
 
 /* Smaller screens */
@@ -279,12 +326,38 @@ nav {
   text-align: center;
 }
 
-.projects__heading {
-  margin: 0 0 20px 0;
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  line-height: 1.2;
-  font-weight: 700;
-  color: white;
+/* SECTION HEADERS: shared gradient + glow */
+.what-we-do__heading,
+.projects__heading,
+.visitor-pathways__heading,
+.faq__heading,
+#founder_text h1 {
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+
+  /* Gradient text: white fading into electric blue */
+  background-image: linear-gradient(90deg, #ffffff 0%, var(--electric) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* Soft blue glow around the letters */
+  filter: drop-shadow(0 0 22px rgba(0, 166, 255, 0.35));
+}
+
+/* Same big size for the main section headers */
+.what-we-do__heading,
+.projects__heading,
+.faq__heading,
+#founder_text h1 {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.15;
+}
+
+.visitor-pathways__heading {
+  background-image: linear-gradient(90deg, #ffffff 0%, #7fd3ff 100%);
 }
 
 .projects__description {
@@ -1018,3 +1091,38 @@ footer.footer {
     right: -14px;
   }
 }
+
+.hero-text h1 {
+  /* white -> electric blue -> white, so the loop has no visible jump */
+  background-image: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    var(--electric) 50%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  filter: drop-shadow(0 0 22px rgba(0, 166, 255, 0.35));
+  animation: hero-gradient 6s linear infinite;
+}
+
+@keyframes hero-gradient {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Respect visitors who turn off animations in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  .hero-text h1 {
+    animation: none;
+  }
+}
+
