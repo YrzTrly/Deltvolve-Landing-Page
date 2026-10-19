@@ -383,7 +383,7 @@ nav {
 .projects__heading,
 .visitor-pathways__heading,
 .faq__heading,
-#founder_text h1 {
+#founder_word h1 {
   display: inline-block;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -729,16 +729,35 @@ nav {
 
 #founder_grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
-  max-width: 1100px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1300px;
   margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }
 
-#founder_word img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+#founder_word .section_desc {
+  text-align: center;
+  margin: 0 0 50px 0;
+}
+
+#founder_img {
+  display: flex;
+  gap: 20px;
+}
+
+.founder-pic {
+  width: 250px;
+  height: 400px;
+  object-fit: cover;
+  border: 1px solid var(--electric);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+}
+
+.founder-pic:nth-child(2) {
+  margin-top: 48px;
 }
 #founder_word {
   padding: 100px 48px;
@@ -750,21 +769,16 @@ nav {
   margin: 0 auto;
 }
 
-#founder_text h1 {
-  margin: 0 0 32px 0;
+#founder_word h1 {
+  text-align: center;
+  width: 100%;
+}
+
+#founder_word h1 {
+  margin: 0 0 10px 0;
   font-size: clamp(2rem, 4vw, 3.25rem);
   line-height: 1.2;
   color: var(--electric);
-}
-
-.founder_img {
-  float: left;
-  width: 320px;
-  max-width: 45%;
-  height: auto;
-  margin: 6px 36px 16px 0;
-  border-radius: 16px;
-  object-fit: cover;
 }
 
 #founder_text p {
@@ -794,7 +808,7 @@ nav {
   color: white;
 }
 
-.faq__description {
+.section_desc {
   margin: 0;
   font-size: clamp(1.05rem, 1.6vw, 1.35rem);
   line-height: 1.7;
@@ -839,11 +853,11 @@ nav {
   line-height: 1.4;
   color: white;
   cursor: pointer;
-  list-style: none; /* removes the default arrow (Firefox/Chrome) */
+  list-style: none;
 }
 
 .faq__question::-webkit-details-marker {
-  display: none; /* removes the default arrow (Safari) */
+  display: none;
 }
 
 .faq__question:focus-visible {
@@ -852,7 +866,6 @@ nav {
   border-radius: 16px;
 }
 
-/* Plus icon built from two lines; the vertical one disappears when open */
 .faq__icon {
   position: relative;
   flex-shrink: 0;
