@@ -60,3 +60,56 @@ if (slider) {
     goTo(0);
     startAutoplay();
 }
+
+/* SCROLL REVEAL */
+(function () {
+  const selectors = [
+    ".hero-text h1",
+    ".hero-text h3",
+    ".what-we-do__eyebrow",
+    ".what-we-do__heading",
+    ".what-we-do__description",
+    ".what-we-do__tagline",
+    ".projects__heading",
+    ".projects__description",
+    ".project-card__title",
+    ".project-card__description",
+    "#founder_text h1",
+    "#founder_text p",
+    "#founder_text i",
+    ".faq__heading",
+    ".faq__description",
+    "#cta_container h1",
+    "#cta_container h3",
+  ];
+
+  const items = document.querySelectorAll(selectors.join(","));
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (reducedMotion || !("IntersectionObserver" in window)) return;
+
+  // Stagger items that share a parent, so they appear one after another
+  const countPerParent = new Map();
+  items.forEach((el) => {
+    const n = countPerParent.get(el.parentElement) || 0;
+    countPerParent.set(el.parentElement, n + 1);
+    el.style.setProperty("--reveal-delay", n * 0.15 + "s");
+    el.classList.add("reveal");
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal--visible");
+          observer.unobserve(entry.target); // reveal once only
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+  );
+
+  items.forEach((el) => observer.observe(el));
+})();

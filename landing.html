@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="landing.css" />
+    <link rel="stylesheet" href="animations.css" />
   </head>
   <body>
     <nav>
@@ -131,73 +132,76 @@
     </section>
 
     <section id="visitor-pathways" class="visitor-pathways">
-      <div class="visitor-pathways__slider">
-        <button
-          class="visitor-pathways__arrow visitor-pathways__arrow--prev"
-          aria-label="Previous slide"
-        >
-          &#10094;
-        </button>
+  <div class="visitor-pathways__slider">
+    <button
+      class="visitor-pathways__arrow visitor-pathways__arrow--prev"
+      aria-label="Previous slide"
+    >
+      &#10094;
+    </button>
 
-        <div class="visitor-pathways__viewport">
-          <div class="visitor-pathways__slides">
-            <!-- Slide 1: Become a Deltron -->
-            <div
-              class="visitor-pathways__slide visitor-pathways__slide--deltron"
-            >
-              <div class="visitor-pathways__content">
-                <h2 class="visitor-pathways__heading">Become a Deltron?</h2>
-                <p class="visitor-pathways__description">
-                  Have a passion for innovation and a drive to solve real-world
-                  problems? Join a team of thinkers and builders shaping the
-                  future through technology.
-                </p>
-              </div>
-            </div>
-
-            <!-- Slide 2: Our Services -->
-            <div
-              class="visitor-pathways__slide visitor-pathways__slide--services"
-            >
-              <div class="visitor-pathways__content">
-                <h2 class="visitor-pathways__heading">
-                  In Need of Our Services?
-                </h2>
-                <p class="visitor-pathways__description">
-                  From custom software to innovative digital solutions, we're
-                  here to help turn your ideas into practical solutions that
-                  make a difference.
-                </p>
-              </div>
-            </div>
-
-            <!-- Slide 3: Partnerships -->
-            <div
-              class="visitor-pathways__slide visitor-pathways__slide--partners"
-            >
-              <div class="visitor-pathways__content">
-                <h2 class="visitor-pathways__heading">Partner With Us?</h2>
-                <p class="visitor-pathways__description">
-                  Great things happen when ideas and expertise come together.
-                  Let's collaborate to build solutions that create lasting
-                  impact.
-                </p>
-              </div>
-            </div>
+    <div class="visitor-pathways__viewport">
+      <div class="visitor-pathways__slides">
+        <!-- Slide 1: Become a Deltron -->
+        <div class="visitor-pathways__slide visitor-pathways__slide--deltron">
+          <div class="visitor-pathways__content">
+            <h2 class="visitor-pathways__heading">Become a Deltron?</h2>
+            <p class="visitor-pathways__description">
+              Have a passion for innovation and a drive to solve real-world
+              problems? Join a team of thinkers and builders shaping the
+              future through technology.
+            </p>
+            <a href="#final_cta" class="visitor-pathways__link">
+              Apply Now
+              <span aria-hidden="true">&rarr;</span>
+            </a>
           </div>
         </div>
 
-        <button
-          class="visitor-pathways__arrow visitor-pathways__arrow--next"
-          aria-label="Next slide"
-        >
-          &#10095;
-        </button>
+        <!-- Slide 2: Our Services -->
+        <div class="visitor-pathways__slide visitor-pathways__slide--services">
+          <div class="visitor-pathways__content">
+            <h2 class="visitor-pathways__heading">In Need of Our Services?</h2>
+            <p class="visitor-pathways__description">
+              From custom software to innovative digital solutions, we're here
+              to help turn your ideas into practical solutions that make a
+              difference.
+            </p>
+            <a href="#final_cta" class="visitor-pathways__link">
+              Contact Us
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
 
-        <!-- Dots are added by slideshow.js -->
-        <div class="visitor-pathways__dots"></div>
+        <!-- Slide 3: Partnerships -->
+        <div class="visitor-pathways__slide visitor-pathways__slide--partners">
+          <div class="visitor-pathways__content">
+            <h2 class="visitor-pathways__heading">Partner With Us?</h2>
+            <p class="visitor-pathways__description">
+              Great things happen when ideas and expertise come together.
+              Let's collaborate to build solutions that create lasting impact.
+            </p>
+            <a href="#final_cta" class="visitor-pathways__link">
+              Let's Collaborate
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <button
+      class="visitor-pathways__arrow visitor-pathways__arrow--next"
+      aria-label="Next slide"
+    >
+      &#10095;
+    </button>
+
+    <!-- Dots are added by slideshow.js -->
+    <div class="visitor-pathways__dots"></div>
+  </div>
+</section>
 
     <section id="founder_word">
       <div id="founder_grid">
@@ -334,5 +338,6 @@
     </footer>
 
     <script src="slideshow.js"></script>
+    <script src="animations.js"></script>
   </body>
 </html>

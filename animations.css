@@ -1,0 +1,221 @@
+/* ==========================================================
+   DELTVOLVE: SITE-WIDE ANIMATIONS
+   Link this file AFTER landing.css so it can build on it.
+   Each numbered block is independent, so you can delete any one.
+   ========================================================== */
+ 
+/* 1. SCROLL PROGRESS BAR (thin glowing line at the very top) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 200;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background-image: linear-gradient(90deg, var(--electric), #ffffff);
+  box-shadow: 0 0 12px rgba(0, 166, 255, 0.8);
+  pointer-events: none;
+}
+ 
+/* 2. LIVING BACKGROUND: particle network + cursor glow */
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+ 
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 520px;
+  margin: -260px 0 0 -260px;
+  border-radius: 50%;
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 166, 255, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+}
+ 
+.cursor-glow.is-on {
+  opacity: 1;
+}
+ 
+/* 3. NAVBAR: drops in on load, highlights the section you are in */
+nav {
+  animation: nav-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+ 
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+ 
+#list-items li:not(:last-child) a.is-active {
+  color: var(--electric);
+}
+ 
+#list-items li:not(:last-child) a.is-active::after {
+  width: 100%;
+}
+ 
+#list-items li:last-child a.is-active {
+  background-color: var(--electric);
+  border-color: var(--electric);
+  color: var(--black);
+}
+ 
+/* 4. HERO TRIANGLE: floats, and tilts toward the mouse (tilt set by JS) */
+.hero-image {
+  animation: hero-float 7s ease-in-out infinite;
+  transition: transform 0.25s ease-out;
+}
+ 
+@keyframes hero-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -16px;
+  }
+}
+ 
+/* 5. CARD SPOTLIGHT: a soft light follows the cursor inside cards */
+.project-card,
+.faq__item {
+  position: relative;
+  --mx: 50%;
+  --my: 50%;
+}
+ 
+.project-card::before,
+.faq__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-image: radial-gradient(
+    420px circle at var(--mx) var(--my),
+    rgba(0, 166, 255, 0.22),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+ 
+.project-card:hover::before,
+.faq__item:hover::before {
+  opacity: 1;
+}
+ 
+.project-card__body,
+.project-card__footer,
+.faq__question,
+.faq__answer {
+  position: relative;
+  z-index: 1;
+}
+ 
+/* 6. POP-IN ON SCROLL for cards, FAQ items, slideshow, CTA and footer
+   (uses translate/scale so it never fights your hover effects) */
+.pop {
+  opacity: 0;
+  translate: 0 50px;
+  scale: 0.96;
+  transition:
+    opacity 0.8s ease,
+    translate 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    scale 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+  transition-delay:
+    var(--pop-delay, 0s), var(--pop-delay, 0s), var(--pop-delay, 0s), 0s, 0s,
+    0s;
+}
+ 
+.pop.pop--in {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+ 
+/* 7. SLIDESHOW: text rises in each time a slide becomes active */
+.visitor-pathways__slider.in-view
+  .visitor-pathways__slide.is-active
+  .visitor-pathways__content
+  > * {
+  animation: slide-text-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+ 
+.visitor-pathways__slider.in-view
+  .visitor-pathways__slide.is-active
+  .visitor-pathways__content
+  > :nth-child(2) {
+  animation-delay: 0.12s;
+}
+ 
+.visitor-pathways__slider.in-view
+  .visitor-pathways__slide.is-active
+  .visitor-pathways__content
+  > :nth-child(3) {
+  animation-delay: 0.24s;
+}
+ 
+@keyframes slide-text-in {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+}
+ 
+/* 8. FAQ: your CSS already used "faq-fade" but it was never defined */
+@keyframes faq-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+/* Visitors who turned motion off see the finished page, no movement */
+@media (prefers-reduced-motion: reduce) {
+  nav,
+  .hero-image,
+  .visitor-pathways__slide .visitor-pathways__content > * {
+    animation: none !important;
+  }
+ 
+  .pop {
+    opacity: 1;
+    translate: none;
+    scale: none;
+    transition: none;
+  }
+ 
+  .scroll-progress,
+  #particles,
+  .cursor-glow {
+    display: none;
+  }
+}
