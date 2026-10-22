@@ -325,7 +325,7 @@ nav {
   87% {
     clip-path: inset(48% 0 24% 0);
     transform: translate(4px, 0);
-  }
+  }s
   90% {
     clip-path: inset(14% 0 56% 0);
     transform: translate(-4px, 0);

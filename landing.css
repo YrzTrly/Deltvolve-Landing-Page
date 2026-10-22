@@ -1676,3 +1676,32 @@ footer.footer {
     transition: none;
   }
 }
+
+
+/* Animated gradient on the FAQ and Vision headings */
+.faq__heading,
+#founder_word h1 {
+  background-image: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    var(--electric) 50%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  animation: hero-gradient 6s linear infinite;
+}
+
+/* Shrink the Vision heading to its text so the gradient fits the letters
+   instead of stretching across the whole row */
+#founder_word h1 {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 10px auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__heading,
+  #founder_word h1 {
+    animation: none;
+  }
+}
