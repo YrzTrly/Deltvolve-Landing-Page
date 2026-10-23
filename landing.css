@@ -1307,7 +1307,7 @@ footer.footer {
     triangle-glow 3.5s ease-in-out 3s infinite;
 }
 
-/* Shockwave ring when the last edge closes */
+/* Shockwave ring: appears only once the triangle has finished drawing */
 .hero-image::after {
   content: "";
   position: absolute;
@@ -1322,7 +1322,7 @@ footer.footer {
     inset 0 0 24px rgba(0, 166, 255, 0.4);
   opacity: 0;
   pointer-events: none;
-  animation: ring-burst 1.2s ease-out 3s both;
+  animation: ring-burst 1.2s ease-out 3s forwards;
 }
 
 /* Reveals the triangle edge by edge */
@@ -1705,3 +1705,4 @@ footer.footer {
     animation: none;
   }
 }
+
